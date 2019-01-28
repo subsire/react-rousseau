@@ -13,7 +13,7 @@ body {
 .button {
 	cursor: pointer;
 	font-weight: 700;
-	padding: 6px;
+	padding: 5px;
 	text-align: center;
 }
 .button.button-large {
@@ -38,6 +38,9 @@ body {
 	right: 0;
 	width: 30px;
 	top: 0;
+}
+.input .button > span {
+	line-height: 0;
 }
 
 /* List */
