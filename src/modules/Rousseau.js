@@ -29,8 +29,6 @@ class Rousseau extends Component
 			const index = Math.floor(partecipants.length * Math.random());
 
 			setTimeout(() => {
-				console.log("Removing...", index);
-
 				this.removePartecipant(index);
 				this.makeExtraction();
 			}, 1000);
