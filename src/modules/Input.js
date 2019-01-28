@@ -8,7 +8,8 @@ class Input extends Component
 
 	clickHandler = (event) => {
 		const { onAdd } = this.props;
-		if (onAdd) {
+		const { value } = this.state;
+		if (onAdd && value.length > 0) {
 			onAdd(this.state.value);
 			this.setState({
 				value: ''
@@ -17,8 +18,9 @@ class Input extends Component
 	};
 
 	inputHandler = (event) => {
+		const { value } = event.target;
 		this.setState({
-			value: event.target.value
+			value
 		});
 	}
 
