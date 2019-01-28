@@ -8,7 +8,7 @@ class List extends Component
 		return (
 			<div className={'items-list mh2 mv4 bt b--silver'}>
 				{items.map((item, index) => (
-					<div key={index} className={'item bb b--silver' + (winner ? ' bg-gold' : '')}>{item}</div>
+					<div key={item.id} className={'item bb b--silver' + (winner ? ' bg-gold' : '')}>{item.label}</div>
 				))}
 			</div>
 		);

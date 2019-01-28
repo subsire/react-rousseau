@@ -17,22 +17,29 @@ class Rousseau extends Component
 		this.setState({ partecipants });
 	};
 
-	doExtraction = () => {
-		this.setState({ extraction: true });
-		this.makeExtraction();
+	makeCountdown = (winner) => {
+
+		return (callback) => {
+			const { partecipants } = this.state;
+
+			if (partecipants.length > 1) {
+				let removable;
+				do {
+					removable = Math.floor(partecipants.length * Math.random());
+				} while (partecipants[removable].id === winner);
+
+				this.removePartecipant(removable);
+				setTimeout(() => { callback(callback); }, 1000);
+			}
+		};
 	};
 
 	makeExtraction = () => {
 		const { partecipants } = this.state;
+		const winner = Math.floor(partecipants.length * Math.random());
+		const countdown = this.makeCountdown(partecipants[winner].id);
 
-		if (partecipants.length > 1) {
-			const index = Math.floor(partecipants.length * Math.random());
-
-			setTimeout(() => {
-				this.removePartecipant(index);
-				this.makeExtraction();
-			}, 1000);
-		}
+		countdown(countdown);
 	};
 
 	removePartecipant = (index = 0) => {
@@ -42,16 +49,21 @@ class Rousseau extends Component
 		this.setState({ partecipants });
 	};
 
+	startExtraction = () => {
+		this.setState({ extraction: true });
+		this.makeExtraction();
+	};
+
 	render() {
 		const { partecipants, extraction } = this.state;
-		const winner = partecipants.length === 1;
+		const winner = extraction && partecipants.length === 1;
 
 		return (
 			<div>
 				{extraction ? (
 					<div>
-						<h2 className={"ma2"}>{"ROUSSEAU: ESTRAZIONE IN CORSO"}</h2>
-						<h3 className={"ma2"}>{(winner ? "IL VINCTORE E':" : "PARTECIPANTI:")}</h3>
+						<h2 className={"ma2"}>{winner ? "ROUSSEAU" : "ROUSSEAU: ESTRAZIONE IN CORSO"}</h2>
+						<h3 className={"ma2"}>{(winner ? "IL VINCITORE E':" : "PARTECIPANTI:")}</h3>
 						<List items={partecipants} winner={winner} />
 					</div>
 				) : (
@@ -60,7 +72,7 @@ class Rousseau extends Component
 						<h3 className={"ma2"}>{"PARTECIPANTI:"}</h3>
 						<List items={partecipants} winner={false} />
 						<Input label={"AGGIUNGI UN PARTECIPANTE"} onAdd={this.addPartecipant} />
-						<div className={"button button-large br-pill bg-navy white mh2"}  onClick={this.doExtraction}>{"ESTRAI IL FORTUNATO"}</div>
+						<div className={"button button-large br-pill bg-navy white mh2"}  onClick={this.startExtraction}>{"ESTRAI IL FORTUNATO"}</div>
 					</div>
 				)}
 			</div>
