@@ -5,10 +5,7 @@ import Rousseau from './modules/Rousseau';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-
-        </header>
+      <div className="App bg-white pa3 ma5 center">
 		<Rousseau />
       </div>
     );
