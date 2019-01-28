@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* Button */
+.button {
+	cursor: pointer;
+	font-weight: 700;
+	padding: 6px;
+	text-align: center;
+}
+.button.button-large {
+	font-size: 120%;
+	padding: 10px;
+	width: 300px;
+}
+
+/* Input */
+.input {
+	position: relative;
+	width: 300px;
+}
+.input input {
+	height: 30px;
+	padding: 5px;
+	width: 100%;
+}
+.input .button {
+	height: 30px;
+	position: absolute;
+	right: 0;
+	width: 30px;
+	top: 0;
+}
+
+/* List */
+.items-list {
+	width: 300px;
+}
+.items-list .item {
+	padding: 10px 5px;
+}
