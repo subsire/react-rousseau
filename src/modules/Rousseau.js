@@ -62,17 +62,17 @@ class Rousseau extends Component
 			<div>
 				{extraction ? (
 					<div>
-						<h2 className={"ma2"}>{winner ? "ROUSSEAU" : "ROUSSEAU: ESTRAZIONE IN CORSO"}</h2>
-						<h3 className={"ma2"}>{(winner ? "IL VINCITORE E':" : "PARTECIPANTI:")}</h3>
+						<h2 className={"mv2 mh0 ph2"}>{winner ? "ROUSSEAU" : "ROUSSEAU: ESTRAZIONE IN CORSO"}</h2>
+						<h3 className={"mv2 mh0 ph2"}>{(winner ? "IL VINCITORE E':" : "PARTECIPANTI:")}</h3>
 						<List items={partecipants} winner={winner} />
 					</div>
 				) : (
 					<div>
-						<h2 className={"ma2"}>{"ROUSSEAU: SISTEMA OPERATIVO CERTIFICATO"}</h2>
-						<h3 className={"ma2"}>{"PARTECIPANTI:"}</h3>
+						<h2 className={"mv2 mh0 ph2"}>{"ROUSSEAU: SISTEMA OPERATIVO CERTIFICATO"}</h2>
+						<h3 className={"mv2 mh0 ph2"}>{"PARTECIPANTI:"}</h3>
 						<List items={partecipants} winner={false} />
 						<Input label={"AGGIUNGI UN PARTECIPANTE"} onAdd={this.addPartecipant} />
-						<div className={"button button-large br-pill bg-navy white mh2"}  onClick={this.startExtraction}>{"ESTRAI IL FORTUNATO"}</div>
+						<div className={"button button-large br-pill bg-navy white"} onClick={this.startExtraction}>{"ESTRAI IL FORTUNATO"}</div>
 					</div>
 				)}
 			</div>
